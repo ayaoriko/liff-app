@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIFFテスト</title>
@@ -11,7 +12,7 @@
     <div class="container mt-2">
         <h1>LIFFのテスト中！！</h1>
         <p><span id="name"></span>さんこんにちは！！</p>
-        <input type="button" value="このページを再読込します" onclick="window.location.reload(true);" />
+        <input type="button" value="このページを再読込します" onclick="location.reload()" />
     </div>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
@@ -20,16 +21,22 @@
             liffId: 'LIFFのIDが入ります。', // Use own liffId
             withLoginOnExternalBrowser: true, // Enable automatic login process
         }).then(() => {
+            getProfile()
+        }).catch((err) => {
+            console.log("error1", err)
+        });;
+
+        function getProfile(){
             liff.getProfile()
             .then((profile) => {
-                const name = profile.displayName;
+                const name = profile.displayName
                 const displayName = document.getElementById('name')
-                displayName.innerHTML= name;
+                displayName.innerHTML= name
             })
             .catch((err) => {
-                console.log("error", err);
+                console.log("error2", err)
             });
-        });
+        }
     </script>
 </body>
 </html>
