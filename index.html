@@ -11,11 +11,6 @@
     <div class="container mt-2">
         <h1>LIFFのテスト中！！</h1>
         <p><span id="name"></span>さんこんにちは！！</p>
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-primary">Left</button>
-            <button type="button" class="btn btn-primary">Middle</button>
-            <button type="button" class="btn btn-primary">Right</button>
-        </div>
         <input type="button" value="このページを再読込します" onclick="window.location.reload(true);" />
     </div>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
@@ -28,14 +23,11 @@
             liff.getProfile()
             .then((profile) => {
                 const name = profile.displayName;
-                console.log(name)
                 const displayName = document.getElementById('name')
                 displayName.innerHTML= name;
             })
             .catch((err) => {
                 console.log("error", err);
-                const displayName = document.getElementById('name')
-                displayName.innerHTML= name;
             });
         });
     </script>
